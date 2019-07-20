@@ -29,9 +29,10 @@ export default class TodoList extends React.Component{
                         this.state.todos.map(todo => 
                         {
                             return(
-                                <div>
-                                    {todo.title} and {todo.completed.toString()}
-                                </div>
+                                // <div>
+                                //     {todo.title} and {todo.completed.toString()}
+                                // </div>
+                                <TodoListItems title={todo.title} completed={todo.completed}/>
                             )
                         })
                         
