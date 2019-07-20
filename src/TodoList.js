@@ -1,6 +1,6 @@
 import React from 'react'
 import TodoListItems from './TodoListItems'
-import Axios from 'axios'
+import axios from 'axios'
 
 import './style.css'
 
@@ -25,6 +25,10 @@ export default class TodoList extends React.Component{
                     ...prevState.todos.slice(index + 1)]
                 }
             ))
+    }
+
+    componentDidMount(){
+        axios.get("")
     }
 
     render(){
