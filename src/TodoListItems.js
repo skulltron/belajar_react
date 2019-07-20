@@ -6,7 +6,10 @@ const TodoListItems = (props) =>{
         <li>
             <input type="checkbox" checked={props.completed}/>
             <span>{props.title}</span>
-            <button>Delete List</button>
+            <button 
+            onClick={
+                () => props.deleteToDoByIndex(props.index)
+            }>Delete List</button>
         </li>
     )
 }

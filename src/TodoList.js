@@ -1,17 +1,30 @@
 import React from 'react'
 import TodoListItems from './TodoListItems'
+import Axios from 'axios'
 
 import './style.css'
 
 //export cara cepat
 export default class TodoList extends React.Component{
     //jangan taruh di luar class
-    state = {
-        list_title:'',
-        current_value:'',
-        todos:[
-            
-        ]
+
+    constructor(){
+        super()
+        this.state = {
+            list_title: '',
+            current_value: '',
+            todos : []
+        }
+        this.deleteToDoByIndex = this.deleteToDoByIndex.bind(this);
+    }
+
+    deleteToDoByIndex(index){
+        this.setState(prevState => (
+                {
+                    todos : [...prevState.todos.slice(0, index),
+                    ...prevState.todos.slice(index + 1)]
+                }
+            ))
     }
 
     render(){
@@ -25,13 +38,18 @@ export default class TodoList extends React.Component{
                         onChange={(event)=>{this.setState({list_title: event.target.value})}}/>
                 <ul>
                     {
-                        this.state.todos.map(todo => 
+                        this.state.todos.map((todo,index) => 
                         {
                             return(
                                 // <div>
                                 //     {todo.title} and {todo.completed.toString()}
                                 // </div>
-                                <TodoListItems title={todo.title} completed={todo.completed}/>
+                                <TodoListItems 
+                                key = {index}
+                                index = {index}
+                                deleteToDoByIndex = {this.deleteToDoByIndex}
+                                title = {todo.title}
+                                completed = {todo.completed}/>
                             )
                         })
                         
