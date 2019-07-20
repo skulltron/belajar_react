@@ -1,11 +1,13 @@
 import React from 'react'
 import TodoListItems from './TodoListItems'
 
+import './style.css'
+
 //export cara cepat
 export default class TodoList extends React.Component{
     render(){
         return(
-            <div>Todo-List
+            <div className="mario">Todo-List
                 <ul>
                     <TodoListItems/>
                     <TodoListItems/>
