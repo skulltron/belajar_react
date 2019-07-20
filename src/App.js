@@ -12,7 +12,7 @@ import TodoList from './TodoList';
 //const nilai yang tidak akan berubah
 const App = ()=>{
     return(
-        <div>Todo-List Component <TodoList/> </div>
+        <TodoList/>
     )
 }
 
