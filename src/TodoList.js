@@ -8,14 +8,9 @@ export default class TodoList extends React.Component{
     //jangan taruh di luar class
     state = {
         list_title:'',
+        current_value:'',
         todos:[
-            {
-                title:'okeeh',
-                completed:true
-            },{
-                title:'no god please no',
-                completed:false
-            }
+            
         ]
     }
 
@@ -23,7 +18,11 @@ export default class TodoList extends React.Component{
         return(
             <div className="mario"><h2>Todo-List</h2>
             <label>Sub Judul</label>
-            <br/><br/><input type="text" placeholder="Enter Title" value={this.state.list_title}/>
+            <br/><br/><input 
+                        type="text" 
+                        placeholder="Enter Title" 
+                        value={this.state.list_title} 
+                        onChange={(event)=>{this.setState({list_title: event.target.value})}}/>
                 <ul>
                     {
                         this.state.todos.map(todo => 
@@ -38,8 +37,23 @@ export default class TodoList extends React.Component{
                         
                     }
                 </ul>
-            <input type="text" placeholder="Enter Item Name"/>
-            <button>Add Item To List</button><br/><br/>
+            <input
+            type="text" 
+            placeholder="Enter Item Name" 
+            value={this.state.current_value}
+            onChange={(event)=>{this.setState({current_value: event.target.value})}}/>
+
+            <button
+            onClick = {() => this.setState(prevState => ({
+                todos : prevState.todos.concat({
+                    title : this.state.current_value, 
+                    completed: false
+                }),
+                current_value: ''
+            })
+            )
+            }>
+            Add Item To List</button><br/><br/>
             </div>
         )
     }
@@ -47,3 +61,5 @@ export default class TodoList extends React.Component{
 
 //export cara biasa
 // export default TodoList
+
+// event adalah apa yang sedang terjadi 
