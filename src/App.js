@@ -1,4 +1,5 @@
 import React from 'react'
+import TodoList from './TodoList';
 
 // class App extends React.Component{
 //     render(){
@@ -8,9 +9,10 @@ import React from 'react'
 //     }
 // }
 
+//const nilai yang tidak akan berubah
 const App = ()=>{
     return(
-        <div>OK</div>
+        <div>Todo-List Component <TodoList/> </div>
     )
 }
 
